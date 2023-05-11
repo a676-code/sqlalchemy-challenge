@@ -29,6 +29,8 @@ plt.show()
 ```
 Use a function `ravel()`, which is explained on [this site](https://stackoverflow.com/questions/10941229/convert-list-of-tuples-to-list) and [this site](https://numpy.org/doc/stable/reference/generated/numpy.ravel.html). 
 
+The file `app.py` uses a small bit of code taken from [this page](https://stackoverflow.com/questions/34009296/using-sqlalchemy-session-from-flask-raises-sqlite-objects-created-in-a-thread-c). 
+
 # Precipitation Analysis
 ![1](images/1.png)
 

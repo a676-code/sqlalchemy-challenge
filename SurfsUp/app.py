@@ -82,7 +82,15 @@ def start_(start):
     temperatures = session.query(func.min(Measurement.tobs), func.avg(Measurement.tobs), func.max(Measurement.tobs)).\
         filter(Measurement.date >= start).all()
 
-    return jsonify(temperatures)
+    temps = []
+    new_dict = {}
+    for Min, Avg, Max in temperatures:
+        new_dict['Min'] = Min
+        new_dict['Avg'] = Avg
+        new_dict['Max'] = Max
+    temps.append(new_dict)
+
+    return jsonify(temps)
     
 @app.route('/api/v1.0/<start>/<end>')
 def start_end(start, end):
@@ -93,7 +101,16 @@ def start_end(start, end):
     temperatures = session.query(func.min(Measurement.tobs), func.avg(Measurement.tobs), func.max(Measurement.tobs)).\
         filter(Measurement.date >= start).\
         filter(Measurement.date <= end).all()
-    return jsonify(temperatures)
+        
+    temps = []
+    new_dict = {}
+    for Min, Avg, Max in temperatures:
+        new_dict['Min'] = Min
+        new_dict['Avg'] = Avg
+        new_dict['Max'] = Max
+    temps.append(new_dict)
+    
+    return jsonify(temps)
 
 if __name__ == '__main__':
     app.run(debug=True)
